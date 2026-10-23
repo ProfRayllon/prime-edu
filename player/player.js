@@ -75,7 +75,7 @@
       v.src = img.getAttribute("data-video");
       v._delay = parseFloat(img.getAttribute("data-video-delay") || "0") || 0;
       v.setAttribute("aria-label", img.getAttribute("alt") || "");
-      copyAttrs(img, v, ["id", "data-build-in", "data-build-out", "data-crop"]);
+      copyAttrs(img, v, ["id", "data-build-in", "data-build-out", "data-crop", "data-pdf-link"]);
       if (!/object-fit/.test(v.getAttribute("style"))) v.style.objectFit = "cover";
       img.replaceWith(v);
     });
@@ -237,6 +237,8 @@
   function firstGesture() { if (!autoFs) return false; enterFs(); return true; }
   var fsBtn = document.getElementById("fs-btn");
   if (canFs) fsBtn.addEventListener("click", function () { fsBtn.blur(); enterFs(); }); else fsBtn.remove();
+  var pdfBtn = document.getElementById("pdf-btn");
+  pdfBtn.addEventListener("click", function () { pdfBtn.blur(); });
 
   document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); if (!firstGesture()) next(); }
@@ -252,6 +254,32 @@
 
   var helpEl = document.getElementById("help");
   setTimeout(function () { helpEl.style.opacity = 0; }, 5000);
+
+  /* ---------- modo PDF (index.html?print): todos os slides montados, um por página ---------- */
+  // Usado por tools/build_pdf.py. Vídeos viram a imagem de capa; com data-pdf-link ganham um link para assistir.
+  var params = new URLSearchParams(location.search);
+  if (params.has("print")) {
+    var base = params.get("base") || location.href;
+    document.documentElement.classList.add("print");
+    order.forEach(function (id) {
+      var sec = makeSlide(id);
+      sec.querySelectorAll("video").forEach(function (v) {
+        var img = document.createElement("img");
+        img.setAttribute("style", v.getAttribute("style") || "");
+        img.src = v.poster; img.alt = v.getAttribute("aria-label") || "";
+        v.replaceWith(img);
+        if (!v.hasAttribute("data-pdf-link")) return;
+        var a = document.createElement("a");
+        a.className = "pdf-video-link";
+        a.href = new URL(v.getAttribute("src"), base).href;
+        a.innerHTML = '<span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' + v.getAttribute("data-pdf-link") + "</span>";
+        sec.appendChild(a);
+      });
+      sec.querySelectorAll("iframe.x-embed").forEach(function (f) { f.srcdoc = f._srcdoc; });
+      stage.appendChild(sec);
+    });
+    return;
+  }
 
   fit();
   var start = parseInt((location.hash || "").slice(1), 10);

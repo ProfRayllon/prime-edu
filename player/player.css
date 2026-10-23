@@ -47,7 +47,22 @@ body { font-family: Inter, Arial, sans-serif; -webkit-font-smoothing: antialiase
 #notes { position: fixed; left: 0; right: 0; bottom: 0; max-height: 34vh; overflow: auto; background: rgba(5,17,47,.94); color: #E6EEFD; font: 400 17px/1.5 Inter, Arial, sans-serif; padding: 16px 22px; display: none; }
 #notes.on { display: block; }
 #help { position: fixed; left: 16px; bottom: 12px; font: 500 13px/1.4 Inter, Arial, sans-serif; color: rgba(255,255,255,.55); pointer-events: none; transition: opacity 1s; }
-#fs-btn { position: fixed; top: 14px; right: 14px; z-index: 5; display: flex; align-items: center; gap: 8px; padding: 9px 14px; border: 0; border-radius: 999px; background: rgba(10,31,92,.82); color: #fff; font: 600 14px/1 Inter, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25); opacity: .85; transition: opacity .2s, background .2s; }
+#tools { position: fixed; top: 14px; right: 14px; z-index: 5; display: flex; align-items: center; gap: 8px; }
+:fullscreen #tools { display: none; }
+#pdf-btn { display: flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 999px; background: rgba(10,31,92,.35); color: rgba(255,255,255,.75); font: 600 12px/1 Inter, Arial, sans-serif; text-decoration: none; opacity: .55; transition: opacity .2s, background .2s; }
+#pdf-btn:hover, #pdf-btn:focus-visible { opacity: 1; background: rgba(10,31,92,.82); color: #fff; outline: none; }
+#pdf-btn svg { width: 14px; height: 14px; }
+#fs-btn { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border: 0; border-radius: 999px; background: rgba(10,31,92,.82); color: #fff; font: 600 14px/1 Inter, Arial, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25); opacity: .85; transition: opacity .2s, background .2s; }
 #fs-btn:hover, #fs-btn:focus-visible { opacity: 1; background: #F7931E; outline: none; }
 #fs-btn svg { width: 18px; height: 18px; }
-:fullscreen #fs-btn { display: none; }
+
+/* Modo PDF (index.html?print) — um slide por página */
+@page { size: 1920px 1080px; margin: 0; }
+html.print, html.print body { height: auto; overflow: visible; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html.print #viewport { position: static; display: block; }
+html.print #stage { position: static; height: auto; background: none; overflow: visible; }
+html.print #stage > section { position: relative; break-after: page; }
+html.print #hud, html.print #help, html.print #notes, html.print #tools { display: none; }
+#stage section a.pdf-video-link { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 100px; text-decoration: none; }
+#stage section a.pdf-video-link span { display: flex; align-items: center; gap: 18px; padding: 26px 44px; border-radius: 999px; background: #F7931E; color: #0A1F5C; font: 700 40px/1 Montserrat, Arial, sans-serif; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+#stage section a.pdf-video-link svg { width: 44px; height: 44px; }
