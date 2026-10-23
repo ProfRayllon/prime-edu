@@ -229,17 +229,26 @@
   function next() { if (busy) return; if (!nextStep()) go(cur + 1); }
   function prev() { if (busy) return; go(cur - 1, { built: true }); }
 
+  // Tela cheia: o navegador só permite após um gesto, então o 1º clique/tecla de navegação entra em tela cheia (sem avançar).
+  var canFs = !!document.documentElement.requestFullscreen;
+  var autoFs = canFs;
+  function enterFs() { autoFs = false; if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(function () {}); }
+  function toggleFs() { if (!document.fullscreenElement) enterFs(); else document.exitFullscreen(); }
+  function firstGesture() { if (!autoFs) return false; enterFs(); return true; }
+  var fsBtn = document.getElementById("fs-btn");
+  if (canFs) fsBtn.addEventListener("click", function () { fsBtn.blur(); enterFs(); }); else fsBtn.remove();
+
   document.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); next(); }
-    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); if (!firstGesture()) next(); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); if (!firstGesture()) prev(); }
     else if (e.key === "Home") go(0, { instant: true });
     else if (e.key === "End") go(order.length - 1, { instant: true, built: true });
-    else if (e.key === "f" || e.key === "F") { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(function () {}); else document.exitFullscreen(); }
+    else if (e.key === "f" || e.key === "F") { if (canFs) toggleFs(); }
     else if (e.key === "n" || e.key === "N") notesEl.classList.toggle("on");
     else if (/^\d$/.test(e.key)) typed += e.key;
     else if (e.key === "Enter" && typed) { go(Math.max(0, Math.min(order.length - 1, +typed - 1)), { instant: true }); typed = ""; }
   });
-  document.getElementById("viewport").addEventListener("click", function () { next(); });
+  document.getElementById("viewport").addEventListener("click", function () { if (!firstGesture()) next(); });
 
   var helpEl = document.getElementById("help");
   setTimeout(function () { helpEl.style.opacity = 0; }, 5000);
