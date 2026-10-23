@@ -1,0 +1,24 @@
+# ── Arquivos que NÃO sobem para o GitHub ──
+# Instruções e anotações locais (Claude e Markdown)
+CLAUDE.md
+*.md
+.claude/
+
+# Dependências e saídas geradas pelos scripts de vídeo
+node_modules/
+video/entregas/frames/
+video/entregas/preview_*.jpg
+video/entregas/entregas.mp4
+video/capa-zoom/kb/
+video/capa-zoom/capa_zoom.mp4
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema e editor
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

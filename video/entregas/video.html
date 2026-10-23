@@ -1,0 +1,374 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Mont";src:url(mont.ttf);font-weight:100 900}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#FBFCFE}
+body{font-family:Inter,Arial,sans-serif;color:#1F2937}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;opacity:0}
+.mont{font-family:Mont,Arial,sans-serif}
+.tag{font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#1E63E9}
+.h{font-family:Mont,Arial,sans-serif;font-weight:800;font-size:76px;line-height:1.05;color:#0B1F5C}
+.sub{font-size:30px;line-height:1.45;color:#4B5563}
+.bul{display:flex;gap:16px;align-items:center;font-size:28px;color:#1F2937;font-weight:500}
+.dot{width:36px;height:36px;border-radius:50%;background:#E6EEFD;display:flex;align-items:center;justify-content:center;flex:none}
+.ph{border:3px dashed #9DB8F2;border-radius:24px;background:#F1F5FC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#5B8DEF;font-size:24px;font-weight:600}
+.card{background:#fff;border-radius:24px;box-shadow:0 30px 80px rgba(11,31,92,.14),0 2px 8px rgba(11,31,92,.06)}
+.chip{display:inline-block;white-space:nowrap;padding:6px 14px;border-radius:999px;font-size:20px;font-weight:700}
+.row{display:flex;align-items:center}
+/* system */
+.win{position:absolute;left:170px;top:96px;width:1580px;height:870px;border-radius:22px;background:#F4F7FD;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.45)}
+.bar{height:52px;background:#E3E9F6;display:flex;align-items:center;padding:0 22px;gap:10px}
+.bd{width:14px;height:14px;border-radius:50%}
+.url{margin-left:24px;height:32px;width:560px;border-radius:10px;background:#fff;font-size:18px;color:#6B7280;display:flex;align-items:center;padding:0 16px;gap:8px}
+.side{position:absolute;left:0;top:52px;bottom:0;width:300px;background:#0B1F5C;padding:34px 22px;display:flex;flex-direction:column;gap:8px}
+.nav{height:58px;border-radius:14px;display:flex;align-items:center;gap:16px;padding:0 18px;color:#C9D6F5;font-size:22px;font-weight:600}
+.nav svg{flex:none}
+.main{position:absolute;left:300px;top:52px;right:0;bottom:0;padding:36px 44px;transform-origin:50% 40%}
+.page{position:absolute;left:44px;top:120px;right:44px;bottom:36px;opacity:0}
+.ptitle{font-family:Mont,Arial,sans-serif;font-weight:800;font-size:40px;color:#0B1F5C}
+.kpi{background:#fff;border-radius:20px;padding:26px 28px;box-shadow:0 6px 24px rgba(11,31,92,.07)}
+.kl{font-size:20px;color:#6B7280;font-weight:600}
+.kv{font-family:Mont,Arial,sans-serif;font-weight:800;font-size:46px;color:#0B1F5C;margin-top:6px}
+.pb{height:12px;border-radius:6px;background:#E6EEFD;overflow:hidden;margin-top:14px}
+.pb i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#1E63E9,#5B8DEF);width:0}
+.cap{position:absolute;left:170px;top:26px;height:52px;display:flex;align-items:center;gap:14px;color:#fff;font-size:26px;font-weight:600}
+.cap b{color:#F7931E;font-weight:800}
+#cursor{position:absolute;left:0;top:0;width:40px;height:40px;opacity:0;pointer-events:none}
+.ripple{position:absolute;width:70px;height:70px;border-radius:50%;border:4px solid #F7931E;opacity:0}
+/* chapters */
+#chap{position:absolute;left:0;right:0;top:1004px;display:flex;justify-content:center;gap:14px;opacity:0}
+.ch{width:230px;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ch span{font-size:20px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9AA3B2}
+.ch .tr{width:100%;height:6px;border-radius:3px;background:rgba(155,170,200,.3);overflow:hidden}
+.ch .tr i{display:block;height:100%;width:0;background:#F7931E;border-radius:3px}
+</style></head>
+<body><div id="stage">
+
+<!-- ========== S0 INTRO ========== -->
+<div class="scene" data-s="0 4.6" style="background:#FBFCFE">
+  <div class="abs" data-a="0.2 0.8 fade" style="left:0;top:0;width:1920px;height:1080px;background:radial-gradient(circle at 80% 20%,#E6EEFD 0%,rgba(230,238,253,0) 55%),radial-gradient(circle at 15% 90%,#FFF1E0 0%,rgba(255,241,224,0) 45%)"></div>
+  <img class="abs" src="new_symbol.png" data-a="0.3 0.8 pop" style="left:820px;top:290px;width:280px">
+  <p class="abs tag" data-a="1.0 0.7 up" style="left:0;width:1920px;top:630px;text-align:center">Entregas e resultados esperados</p>
+  <h1 class="abs h" data-a="1.3 0.8 up" style="left:0;width:1920px;top:686px;text-align:center;font-size:96px">O que a sua instituição recebe</h1>
+  <div class="abs" data-a="2.0 0.6 grow" style="left:912px;top:820px;width:96px;height:8px;border-radius:4px;background:#F7931E"></div>
+</div>
+
+<!-- ========== S1 PLANO ========== -->
+<div class="scene" data-s="4.5 11.1">
+  <p class="abs tag" data-a="4.8 .6 up" style="left:128px;top:150px">01 · Planejamento</p>
+  <h2 class="abs h" data-a="5.0 .7 up" style="left:128px;top:196px;width:700px">Plano de ação</h2>
+  <div class="abs card" data-a="5.4 .8 left" style="left:128px;top:330px;width:660px;height:610px;overflow:hidden;border-radius:22px">
+    <div class="row" style="height:64px;background:#0B1F5C;padding:0 26px;gap:14px"><img src="new_word_white.png" style="width:130px"><span style="color:#C9D6F5;font-size:20px;font-weight:600">· Checklist do plano</span><span id="ck1n" class="chip" style="margin-left:auto;background:#1E63E9;color:#fff;font-size:18px">0 de 6</span></div>
+    <div style="height:8px;background:#E6EEFD"><i id="ck1b" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#1E63E9,#F7931E)"></i></div>
+    <div id="ck1" style="padding:16px 26px;display:flex;flex-direction:column;gap:4px"></div>
+  </div>
+  <div class="abs card" data-a="5.4 .9 right" style="left:860px;top:150px;width:932px;height:790px;padding:44px 48px">
+    <div class="row" style="justify-content:space-between"><div><p style="font-size:20px;font-weight:700;letter-spacing:3px;color:#9AA3B2">MODELO</p><p class="mont" style="font-size:38px;font-weight:800;color:#0B1F5C;margin-top:4px">Plano de Ação 2026</p></div><img src="new_word.png" style="width:190px"></div>
+    <div style="height:2px;background:#E3E8F2;margin:26px 0 8px"></div>
+    <div class="row" style="font-size:20px;font-weight:700;color:#6B7280;letter-spacing:1px;padding:12px 0"><span style="flex:1">AÇÃO</span><span style="width:150px">PRAZO</span><span style="width:180px">RESPONSÁVEL</span><span style="width:170px">STATUS</span></div>
+    <div id="planrows"></div>
+  </div>
+</div>
+
+<!-- ========== S2 PROJETO ========== -->
+<div class="scene" data-s="11 17.1">
+  <p class="abs tag" data-a="11.3 .6 up" style="left:128px;top:150px">02 · Pedagógico</p>
+  <h2 class="abs h" data-a="11.5 .7 up" style="left:128px;top:204px;width:740px;font-size:60px;white-space:nowrap">Projeto pedagógico</h2>
+  <div class="abs card" data-a="11.9 .8 left" style="left:128px;top:330px;width:660px;height:610px;overflow:hidden;border-radius:22px">
+    <div class="row" style="height:64px;background:#0B1F5C;padding:0 26px;gap:14px"><img src="new_word_white.png" style="width:130px"><span style="color:#C9D6F5;font-size:20px;font-weight:600">· Checklist do projeto</span><span id="ck2n" class="chip" style="margin-left:auto;background:#1E63E9;color:#fff;font-size:18px">0 de 6</span></div>
+    <div style="height:8px;background:#E6EEFD"><i id="ck2b" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#1E63E9,#F7931E)"></i></div>
+    <div id="ck2" style="padding:16px 26px;display:flex;flex-direction:column;gap:4px"></div>
+  </div>
+  <div class="abs card" data-a="11.9 .9 right" style="left:860px;top:150px;width:932px;height:790px;overflow:hidden">
+    <div style="height:170px;background:linear-gradient(120deg,#0B2A8A,#1E63E9);padding:40px 48px;position:relative">
+      <p style="font-size:20px;font-weight:700;letter-spacing:3px;color:#C9D6F5">MODELO</p>
+      <p class="mont" style="font-size:46px;font-weight:800;color:#fff;margin-top:8px">Projeto pedagógico</p>
+      <img src="new_word_white.png" style="position:absolute;right:48px;top:52px;width:170px">
+    </div>
+    <div id="projsteps" style="padding:22px 48px;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px"></div>
+  </div>
+</div>
+
+<!-- ========== S3 FORMAÇÕES ========== -->
+<div class="scene" data-s="17 24.6">
+  <p class="abs tag" data-a="17.3 .6 up" style="left:128px;top:150px">03 · Formação continuada</p>
+  <h2 class="abs h" data-a="17.5 .7 up" style="left:128px;top:196px;width:700px">Programas formativos e kits</h2>
+  <p class="abs sub" data-a="17.8 .7 up" style="left:128px;top:376px;width:640px">Trilhas para professores e gestores, com o kit de cada participante.</p>
+  <div class="abs card" data-a="18.0 .8 right" style="left:860px;top:150px;width:932px;height:330px;padding:36px 44px">
+    <p style="font-size:20px;font-weight:700;letter-spacing:3px;color:#9AA3B2">TRILHA FORMATIVA</p>
+    <div class="abs" style="left:80px;top:170px;width:772px;height:6px;border-radius:3px;background:#E6EEFD"></div>
+    <div class="abs" data-a="18.8 2.2 grow" style="left:80px;top:170px;width:772px;height:6px;border-radius:3px;background:#1E63E9"></div>
+    <div id="trail"></div>
+  </div>
+  <div id="kits"></div>
+</div>
+
+<!-- ========== S4 MATERIAIS ========== -->
+<div class="scene" data-s="24.5 31.1">
+  <p class="abs tag" data-a="24.8 .6 up" style="left:128px;top:110px">04 · Materiais</p>
+  <h2 class="abs h" data-a="25.0 .7 up" style="left:128px;top:154px;width:1664px;font-size:64px">Materiais de contribuição pedagógica</h2>
+  <p class="abs sub" data-a="25.3 .7 up" style="left:128px;top:240px;width:1664px">Guias, relatórios e revistas produzidos para a instituição.</p>
+  <div id="books"></div>
+</div>
+
+
+<!-- ========== S5 SISTEMA ========== -->
+<div class="scene" data-s="31 66.1" style="background:radial-gradient(circle at 75% 15%,#1E3F9E 0%,#0A1F5C 55%,#071645 100%)">
+  <div class="cap" id="cap"><b>05</b> Sistema PrimeEdu · <span id="capt">Acesso</span></div>
+  <div class="win" data-a="31.2 .9 scale">
+    <div class="bar"><div class="bd" style="background:#FF6B5E"></div><div class="bd" style="background:#FFBD2E"></div><div class="bd" style="background:#28C840"></div><div class="url"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>app.primeedu.com.br</div></div>
+    <!-- login -->
+    <div id="login" style="position:absolute;left:0;top:52px;right:0;bottom:0;display:flex">
+      <div style="width:700px;background:linear-gradient(150deg,#0B2A8A,#0A1F5C);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px">
+        <img src="new_stack_white.png" style="width:330px"><p style="font-size:26px;color:#C9D6F5;text-align:center;width:460px;line-height:1.4">Gestão, formação e resultados em um só lugar.</p>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 130px;gap:22px">
+        <p class="mont" style="font-size:44px;font-weight:800;color:#0B1F5C">Acesse sua conta</p>
+        <p style="font-size:22px;color:#6B7280;margin-bottom:10px">Secretaria Municipal de Educação</p>
+        <p style="font-size:20px;font-weight:700;color:#4B5563">E-MAIL</p>
+        <div style="height:66px;border-radius:14px;background:#fff;border:2px solid #C9D6F5;display:flex;align-items:center;padding:0 22px;font-size:24px;color:#1F2937"><span id="typed"></span><span id="caret" style="width:2px;height:30px;background:#1E63E9;margin-left:2px"></span></div>
+        <p style="font-size:20px;font-weight:700;color:#4B5563">SENHA</p>
+        <div style="height:66px;border-radius:14px;background:#fff;border:2px solid #C9D6F5;display:flex;align-items:center;padding:0 22px;font-size:30px;letter-spacing:6px;color:#1F2937"><span id="pw"></span></div>
+        <div id="btnlogin" style="height:70px;margin-top:14px;border-radius:14px;background:#1E63E9;color:#fff;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center">Entrar</div>
+      </div>
+    </div>
+    <!-- app -->
+    <div id="app" style="position:absolute;left:0;top:52px;right:0;bottom:0;opacity:0">
+      <div class="side" style="top:0">
+        <img src="new_word_white.png" style="width:200px;margin:0 0 30px 14px">
+        <div id="navs"></div>
+      </div>
+      <div style="position:absolute;left:300px;top:0;right:0;bottom:0;overflow:hidden"><div class="main" id="main" style="top:0;left:0">
+        <div class="row" style="justify-content:space-between"><div><p style="font-size:22px;color:#6B7280">Olá,</p><p class="mont" style="font-size:30px;font-weight:800;color:#0B1F5C">Secretaria de Educação</p></div>
+          <div class="row" style="gap:16px"><div style="height:52px;width:320px;border-radius:14px;background:#fff;font-size:20px;color:#9AA3B2;display:flex;align-items:center;padding:0 18px">Buscar…</div><div style="width:52px;height:52px;border-radius:50%;background:#F7931E;color:#fff;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center">SE</div></div></div>
+        <!-- inicio -->
+        <div class="page" id="pg0">
+          <p class="ptitle">Visão geral</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:24px" id="homekpi"></div>
+          <div class="kpi" style="margin-top:24px;height:340px;position:relative"><p class="kl">Evolução da participação nas formações</p><svg id="homechart" width="1060" height="250" viewBox="0 0 1060 250" style="position:absolute;left:28px;top:70px"></svg></div>
+        </div>
+        <!-- cursos -->
+        <div class="page" id="pg1"><p class="ptitle">Módulo de cursos</p><div id="courses" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px"></div></div>
+        <!-- projetos -->
+        <div class="page" id="pg2"><p class="ptitle">Módulo de projetos</p><div id="kanban" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px"></div></div>
+        <!-- indicadores -->
+        <div class="page" id="pg3"><div class="row" style="justify-content:space-between"><p class="ptitle">Módulo de indicadores</p><span class="chip" style="background:#FFF1E0;color:#E0740B">12 indicadores · valores de exemplo</span></div><div id="inds" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px"></div></div>
+        <!-- gamificação -->
+        <div class="page" id="pg4"><p class="ptitle">Módulo de gamificação</p>
+          <div style="display:flex;gap:22px;margin-top:24px">
+            <div class="kpi" style="flex:1.5;padding:22px 28px" id="rank"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+              <div class="kpi" style="background:linear-gradient(135deg,#F7931E,#E0740B);color:#fff;position:relative"><p style="font-size:20px;font-weight:700;opacity:.9">SUA PONTUAÇÃO</p><p class="mont" style="font-size:72px;font-weight:800" id="mypts">0</p><p style="font-size:20px;opacity:.9">pontos acumulados</p><div id="plus" class="mont" style="position:absolute;right:28px;top:30px;font-size:40px;font-weight:800;opacity:0">+50</div></div>
+              <div class="kpi"><p class="kl">Conquistas</p><div id="badges" style="display:flex;gap:16px;margin-top:16px"></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- relatório -->
+        <div class="page" id="pg5"><div class="row" style="justify-content:space-between"><p class="ptitle">Relatório geral</p><div id="btnpdf" style="height:58px;padding:0 26px;border-radius:14px;background:#F7931E;color:#fff;font-size:22px;font-weight:700;display:flex;align-items:center;gap:12px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Exportar relatório técnico</div></div>
+          <div style="display:flex;gap:22px;margin-top:24px">
+            <div class="kpi" style="flex:1;height:560px;position:relative" id="repcard"></div>
+            <div style="width:360px;display:flex;flex-direction:column;gap:22px" id="repside"></div>
+          </div>
+          <div id="toast" style="position:absolute;right:0;bottom:0;width:360px;height:62px;padding:0 18px;border-radius:16px;background:#0B1F5C;color:#fff;font-size:20px;white-space:nowrap;font-weight:600;display:flex;align-items:center;gap:14px;opacity:0"><span style="flex:none;width:32px;height:32px;border-radius:50%;background:#28C840;display:flex;align-items:center;justify-content:center">✓</span>Relatório técnico gerado (PDF)</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== S6 PAINEL ========== -->
+<div class="scene" data-s="66 77.6" style="background:radial-gradient(circle at 75% 10%,#E6EEFD 0%,#FBFCFE 55%)">
+  <p class="abs tag" data-a="66.3 .6 up" style="left:170px;top:56px">06 · Resultados</p>
+  <h2 class="abs h" data-a="66.5 .7 up" style="left:170px;top:96px;width:1200px;font-size:64px">Painel de resultados</h2>
+  <div class="abs row" data-a="66.8 .6 up" style="right:170px;top:118px;gap:12px"><span class="chip" style="background:#fff;color:#0B1F5C;font-size:20px;box-shadow:0 4px 14px rgba(11,31,92,.08)">Rede municipal · 2026</span><span class="chip" style="background:#fff;color:#0B1F5C;font-size:20px;box-shadow:0 4px 14px rgba(11,31,92,.08)">Todas as escolas</span><span class="chip" style="background:#FFF1E0;color:#E0740B;font-size:20px">Valores de exemplo</span></div>
+  <div class="win" id="dash" data-a="66.7 .9 scale" style="top:190px;height:760px;background:#F4F7FD">
+    <div class="bar"><div class="bd" style="background:#FF6B5E"></div><div class="bd" style="background:#FFBD2E"></div><div class="bd" style="background:#28C840"></div><div class="url"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>app.primeedu.com.br/painel</div></div>
+    <div id="dashin" style="position:absolute;left:28px;top:76px;right:28px;bottom:24px"></div>
+  </div>
+</div>
+
+<!-- ========== S7 FINAL ========== -->
+<div class="scene" data-s="77.5 82.2" style="background:radial-gradient(circle at 70% 20%,#1E3F9E 0%,#0A1F5C 60%,#071645 100%)">
+  <img class="abs" src="new_stack_white.png" data-a="77.9 .9 pop" style="left:735px;top:200px;width:450px">
+  <p class="abs mont" data-a="78.6 .8 up" style="left:0;width:1920px;top:640px;text-align:center;font-size:58px;font-weight:800;color:#fff">Tudo o que a sua instituição recebe,</p>
+  <p class="abs mont" data-a="78.9 .8 up" style="left:0;width:1920px;top:716px;text-align:center;font-size:58px;font-weight:800;color:#F7931E">em um só lugar.</p>
+  <div class="abs" data-a="79.5 .6 grow" style="left:912px;top:830px;width:96px;height:8px;border-radius:4px;background:#F7931E"></div>
+</div>
+
+
+<div id="chap"></div>
+<svg id="cursor" viewBox="0 0 40 40"><path d="M6 3 L6 33 L14 25 L20 38 L25 36 L19 23 L30 23 Z" fill="#fff" stroke="#0B1F5C" stroke-width="2.2" stroke-linejoin="round"/></svg>
+<div class="ripple" id="rip"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id), H=(el,h)=>{el.insertAdjacentHTML('beforeend',h);return el.lastElementChild};
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)), E=x=>1-Math.pow(1-x,3), EIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const seg=(t,a,d)=>clamp((t-a)/d,0,1);
+const ICON={
+ home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+ book:'<path d="M2 5c3-1 6-1 10 1v14c-4-2-7-2-10-1z"/><path d="M22 5c-3-1-6-1-10 1v14c4-2 7-2 10-1z"/>',
+ proj:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h8M8 13h5"/>',
+ chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+ trophy:'<path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8"/>',
+ rep:'<path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h8M9 17h6"/>',
+ abc:'<path d="M3 18L7 6l4 12M4.5 14h5"/><path d="M14 6h4a3 3 0 0 1 0 6h-4zM14 12h5a3 3 0 0 1 0 6h-5z"/>',
+ layers:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+ gear:'<circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+ clip:'<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M8.5 13l2.5 2.5 4.5-5"/>',
+ monitor:'<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+ heart:'<path d="M12 20s-8-4.6-8-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 8 2.8C20 15.4 12 20 12 20z"/>'};
+const ico=(k,c,s=26)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>`;
+
+/* ---- build S1 rows ---- */
+const plan=[["Formação em alfabetização","Mar/26","Coord. pedagógica","ok"],["Avaliação diagnóstica","Abr/26","Equipe PrimeEdu","ok"],["Projeto de leitura nas escolas","Mai/26","Gestores escolares","and"],["Monitoramento de indicadores","Mensal","Secretaria","and"],["Culminância dos projetos","Nov/26","Rede municipal","plan"]];
+plan.forEach((r,i)=>{const st=r[3]=='ok'?'<span class="chip" style="background:#E3F6E8;color:#1F8A47">Concluído</span>':r[3]=='and'?'<span class="chip" style="background:#E6EEFD;color:#1E63E9">Em andamento</span>':'<span class="chip" style="background:#FFF1E0;color:#E0740B">Planejado</span>';
+ H($('planrows'),`<div class="row" data-a="${6.0+i*.35} .5 up" style="border-top:1px solid #EEF1F7;padding:22px 0;font-size:24px"><span style="flex:1;font-weight:600;color:#0B1F5C">${r[0]}</span><span style="width:150px;color:#4B5563">${r[1]}</span><span style="width:180px;color:#4B5563;font-size:21px">${r[2]}</span><span style="width:170px">${st}</span></div>`)});
+H($('planrows'),`<div data-a="8.2 .6 up" style="margin-top:26px;background:#F1F5FC;border-radius:16px;padding:20px 24px"><div class="row" style="justify-content:space-between;font-size:22px;font-weight:700;color:#0B1F5C"><span>Execução do plano</span><span id="planpct">0%</span></div><div class="pb"><i id="planbar" data-w="40"></i></div></div>`);
+
+/* ---- checklists ---- */
+const CK=[];
+function mkCheck(id,items,t0,dt){items.forEach((s,i)=>{const t=t0+i*dt;CK.push([id,i,t]);H($(id),`<div class="row" data-a="${t-.5} .4 left" style="gap:18px;padding:13px 6px;border-bottom:${i<items.length-1?'1px solid #EEF1F7':'none'}"><div id="${id}x${i}" style="width:38px;height:38px;border-radius:10px;border:3px solid #C9D6F5;display:flex;align-items:center;justify-content:center;flex:none;color:#fff;font-weight:900;font-size:22px"></div><div style="flex:1"><p style="font-size:24px;font-weight:600;color:#0B1F5C">${s[0]}</p><p style="font-size:19px;color:#9AA3B2;margin-top:2px">${s[1]}</p></div><span id="${id}s${i}" class="chip" style="background:#F1F5FC;color:#9AA3B2;font-size:17px">Pendente</span></div>`)})}
+mkCheck('ck1',[["Diagnóstico da rede","Dados e escuta da gestão"],["Metas definidas","Validadas com a secretaria"],["Responsáveis designados","Por ação e por escola"],["Cronograma aprovado","Etapas mês a mês"],["Indicadores de acompanhamento","Ligados ao sistema"],["Reunião de validação","Plano assinado"]],6.4,.62);
+mkCheck('ck2',[["Tema definido","Escolhido com a escola"],["Objetivos alinhados à BNCC","Habilidades mapeadas"],["Etapas e cronograma","Do início à culminância"],["Recursos necessários","Materiais e espaços"],["Critérios de avaliação","Como medir o avanço"],["Culminância planejada","Apresentação à comunidade"]],12.9,.62);
+/* ---- S2 model sections ---- */
+[["Identificação","Escola, turmas, responsáveis"],["Justificativa","Por que este projeto"],["Objetivos","Gerais e específicos"],["Habilidades BNCC","Competências trabalhadas"],["Metodologia","Como será desenvolvido"],["Cronograma","Etapas e prazos"],["Recursos","Materiais e parceiros"],["Avaliação","Instrumentos e critérios"],["Culminância","Socialização dos resultados"],["Anexos","Registros e evidências"]].forEach((s,i)=>H($('projsteps'),`<div class="row" data-a="${12.4+i*.16} .45 up" style="gap:16px;background:${i==8?'#FFF1E0':'#F6F8FC'};border-radius:14px;padding:14px 18px"><div class="mont" style="width:44px;height:44px;border-radius:50%;background:${i==8?'#F7931E':'#1E63E9'};color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;flex:none">${String(i+1).padStart(2,'0')}</div><div><p style="font-size:24px;font-weight:700;color:#0B1F5C">${s[0]}</p><p style="font-size:18px;color:#6B7280;margin-top:2px">${s[1]}</p></div></div>`));
+
+/* ---- S3 trail + kits ---- */
+["Encontro 1","Encontro 2","Encontro 3","Encontro 4"].forEach((e,i)=>{const x=80+i*257;
+ H($('trail'),`<div class="abs" data-a="${18.9+i*.55} .5 pop" style="left:${x-26}px;top:147px;width:52px;height:52px;border-radius:50%;background:${i==3?'#F7931E':'#1E63E9'};border:6px solid #fff;box-shadow:0 4px 14px rgba(11,31,92,.2)"></div>`);
+ H($('trail'),`<p class="abs" data-a="${19.0+i*.55} .5 up" style="left:${x-100}px;width:200px;top:218px;text-align:center;font-size:24px;font-weight:700;color:#0B1F5C">${e}</p>`);
+ H($('trail'),`<p class="abs" data-a="${19.1+i*.55} .5 up" style="left:${x-100}px;width:200px;top:254px;text-align:center;font-size:20px;color:#6B7280">${["Mar","Mai","Ago","Out"][i]}/2026</p>`)});
+[["k_cracha_t.png","Crachá e cordão"],["k_camiseta_t.png","Camiseta"],["k_garrafa_t.png","Garrafa"],["k_caneta_t.png","Caneta"]].forEach((k,i)=>H($('kits'),`<div class="abs" data-a="${20.6+i*.35} .6 up" style="left:${128+i*422}px;top:510px;width:398px;height:440px;display:flex;flex-direction:column;align-items:center;gap:18px"><div style="width:398px;height:370px;display:flex;align-items:center;justify-content:center"><img class="flt" data-f="${i}" src="${k[0]}" style="max-width:${i==3?398:360}px;max-height:350px;object-fit:contain"></div><span class="chip" style="background:#0B1F5C;color:#fff;font-size:22px">${k[1]}</span></div>`));
+
+/* ---- S4 covers ---- */
+[["c_metodologias_t.png"],["c_resultado_t.png"],["c_projetos_t.png"]].forEach((c,i)=>H($('books'),`<div class="abs" data-a="${25.5+i*.4} .8 up" style="left:${196+i*536}px;top:320px;width:456px;height:620px;display:flex;align-items:center;justify-content:center"><img class="flt" data-f="${i}" src="${c[0]}" style="max-width:456px;max-height:620px;object-fit:contain"></div>`));
+
+
+/* ---- S5 system ---- */
+const NAV=[["home","Início"],["book","Cursos"],["proj","Projetos"],["chart","Indicadores"],["trophy","Gamificação"],["rep","Relatório geral"]];
+NAV.forEach((n,i)=>H($('navs'),`<div class="nav" id="nav${i}" style="margin-bottom:8px">${ico(n[0],'currentColor')}${n[1]}</div>`));
+[["Cursos ativos",8,"book"],["Projetos",24,"proj"],["Profissionais",553,"home"],["Pontos da rede",12480,"trophy"]].forEach((k,i)=>H($('homekpi'),`<div class="kpi"><div class="row" style="justify-content:space-between"><p class="kl">${k[0]}</p>${ico(k[2],'#5B8DEF',26)}</div><p class="kv" data-c="37.0 1.4 ${k[1]}">0</p></div>`));
+(function(){const pts=[30,48,44,62,70,78,92];let d='';pts.forEach((v,i)=>{const x=20+i*170,y=230-v*2.2;d+=(i?'L':'M')+x+' '+y});const s=$('homechart');s.innerHTML=`<path d="M20 230 H1040" stroke="#E3E8F2" stroke-width="2"/><path id="hcl" d="${d}" fill="none" stroke="#1E63E9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`+pts.map((v,i)=>`<circle cx="${20+i*170}" cy="${230-v*2.2}" r="8" fill="#fff" stroke="#1E63E9" stroke-width="4" data-a="${37.2+i*.2} .3 pop"/>`).join('')})();
+[["Alfabetização na idade certa",82,"abc","#1E63E9","#0B2A8A"],["BNCC na prática",64,"layers","#F7931E","#E0740B"],["Gestão escolar",91,"gear","#14A39A","#0B7A73"],["Avaliação formativa",57,"clip","#7C5CFF","#5B3FD9"],["Tecnologias em sala",73,"monitor","#5B8DEF","#1E63E9"],["Educação inclusiva",48,"heart","#E5487A","#C42F60"]].forEach((c,i)=>H($('courses'),`<div class="kpi" data-a="${40.0+i*.18} .5 up" style="padding:0;overflow:hidden"><div style="height:120px;background:linear-gradient(135deg,${c[3]},${c[4]});display:flex;align-items:flex-end;justify-content:space-between;padding:18px 24px;position:relative;overflow:hidden"><div style="width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">${ico(c[2],'#fff',36)}</div><div style="position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.12)"></div><span class="chip" style="background:rgba(255,255,255,.22);color:#fff;font-size:17px">${[40,30,20,24,16,32][i]}h</span></div><div style="padding:20px 24px"><p style="font-size:24px;font-weight:700;color:#0B1F5C">${c[0]}</p><div class="row" style="justify-content:space-between;margin-top:12px;font-size:20px;color:#6B7280"><span>Progresso da turma</span><b style="color:${c[4]}" data-c="${40.6+i*.15} 1.6 ${c[1]} 0 %">0%</b></div><div class="pb"><i data-w="${c[1]}" data-g="${40.6+i*.15} 1.6" style="background:linear-gradient(90deg,${c[4]},${c[3]})"></i></div></div></div>`));
+[["Planejado","#9AA3B2",["Feira de ciências","Clube de leitura"]],["Em andamento","#1E63E9",["Leitura que transforma","Matemática divertida","Horta escolar"]],["Concluído","#28A745",["Semana da inclusão","Olimpíada de redação"]]].forEach((c,ci)=>{const col=H($('kanban'),`<div style="background:#E9EEF8;border-radius:20px;padding:20px;height:640px"><div class="row" style="gap:12px;font-size:22px;font-weight:800;color:#0B1F5C;margin-bottom:16px"><i style="width:14px;height:14px;border-radius:50%;background:${c[1]}"></i>${c[0]}<span style="margin-left:auto;font-size:20px;color:#6B7280">${c[2].length}</span></div></div>`);
+ c[2].forEach((p,i)=>H(col,`<div class="kpi" data-a="${44.6+ci*.35+i*.25} .5 up" style="padding:20px 22px;margin-bottom:14px"><p style="font-size:23px;font-weight:700;color:#0B1F5C">${p}</p><div class="row" style="gap:10px;margin-top:12px"><span class="chip" style="background:#E6EEFD;color:#1E63E9;font-size:18px">${["E.M. Centro","E.M. Esperança","E.M. São José"][(i+ci)%3]}</span><span style="margin-left:auto;font-size:18px;color:#9AA3B2">${12+i*7+ci*3} alunos</span></div></div>`))});
+const IND=[["Frequência escolar",94,"%"],["Proficiência em Língua Portuguesa",78,"%"],["Proficiência em Matemática",72,"%"],["Alfabetização até o 2º ano",85,"%"],["Taxa de aprovação",96,"%"],["Distorção idade-série",8,"%"],["Abandono escolar",1.2,"%"],["Participação nas formações",91,"%"],["Planos de aula entregues",88,"%"],["Projetos concluídos",24,""],["Engajamento das famílias",67,"%"],["IDEB projetado",6.1,""]];
+IND.forEach((d,i)=>{const dec=(d[1]%1)?1:0, good=!(i==5||i==6), w=i==9?80:i==11?61:d[1];
+ H($('inds'),`<div class="kpi" data-a="${49.0+i*.1} .45 pop" style="padding:20px 22px;height:196px"><p style="font-size:19px;font-weight:600;color:#6B7280;height:48px;line-height:1.25">${d[0]}</p><div class="row" style="justify-content:space-between;margin-top:8px"><p class="mont" style="font-size:42px;font-weight:800;color:#0B1F5C" data-c="${49.4+i*.1} 1.6 ${d[1]} ${dec} ${d[2]}">0</p><span class="chip" style="background:${good?'#E3F6E8':'#FFF1E0'};color:${good?'#1F8A47':'#E0740B'};font-size:17px">${good?'▲':'▼'} ${(2+i%4)}</span></div><div class="pb" style="height:10px"><i data-w="${Math.min(w,100)}" data-g="${49.4+i*.1} 1.6" style="${i==5||i==6?'background:#F7931E':''}"></i></div></div>`)});
+[["E.M. Esperança",1840],["E.M. Centro",1725],["E.M. São José",1610],["E.M. Boa Vista",1490],["E.M. Santa Luzia",1385]].forEach((r,i)=>H($('rank'),`<div class="row" data-a="${55.2+i*.2} .45 left" style="gap:18px;padding:16px 0;border-bottom:${i<4?'1px solid #EEF1F7':'none'}"><div class="mont" style="width:52px;height:52px;border-radius:50%;background:${i==0?'#F7931E':i<3?'#1E63E9':'#E6EEFD'};color:${i<3?'#fff':'#1E63E9'};font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center">${i+1}º</div><div style="flex:1"><p style="font-size:24px;font-weight:700;color:#0B1F5C">${r[0]}</p><div class="pb" style="height:10px;margin-top:8px"><i data-w="${r[1]/19}" data-g="${55.4+i*.2} 1.2" style="${i==0?'background:linear-gradient(90deg,#F7931E,#FFB347)':''}"></i></div></div><p class="mont" style="width:160px;white-space:nowrap;text-align:right;font-size:28px;font-weight:800;color:#0B1F5C" data-c="${55.4+i*.2} 1.2 ${r[1]} 0  pts">0</p></div>`));
+[["Leitor","#1E63E9"],["Mestre","#F7931E"],["Inovador","#5B8DEF"],["Destaque","#0B2A8A"]].forEach((b,i)=>H($('badges'),`<div data-a="${57.0+i*.25} .45 pop" style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:76px;height:76px;border-radius:50%;background:${b[1]};display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(11,31,92,.2)">${ico('trophy','#fff',36)}</div><span style="font-size:18px;font-weight:700;color:#4B5563">${b[0]}</span></div>`));
+(function(){const c=$('repcard');let h=`<p class="kl">Resultados consolidados por escola</p><div style="position:absolute;left:28px;right:28px;bottom:70px;top:90px;display:flex;align-items:flex-end;gap:34px">`;
+ [62,78,55,84,70,91,66].forEach((v,i)=>h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:10px"><div data-h="${v}" data-g="${61.0+i*.12} 1.0" style="width:100%;border-radius:10px 10px 4px 4px;background:${i==5?'linear-gradient(180deg,#F7931E,#E0740B)':'linear-gradient(180deg,#5B8DEF,#1E63E9)'};height:0"></div></div>`);
+ h+=`</div><div style="position:absolute;left:28px;right:28px;bottom:26px;display:flex;gap:34px;font-size:18px;color:#6B7280;text-align:center">`+["E1","E2","E3","E4","E5","E6","E7"].map(e=>`<span style="flex:1">Escola ${e.slice(1)}</span>`).join('')+`</div>`;c.innerHTML=h;
+ [["Média geral","8,4"],["Metas atingidas","11 de 12"],["Escolas acompanhadas","18"]].forEach((k,i)=>H($('repside'),`<div class="kpi" data-a="${61.2+i*.2} .5 right" style="height:144px;padding:20px 26px"><p class="kl">${k[0]}</p><p class="kv">${k[1]}</p></div>`))})();
+
+/* ---- S6 dashboard ---- */
+(function(){const d=$('dashin');const card=(x,y,w,h,inner,t)=>`<div class="kpi" data-a="${t} .5 up" style="position:absolute;left:${x}px;top:${y}px;width:${w}px;height:${h}px;padding:20px 24px">${inner}</div>`;
+ const W=1524;let h='';
+ [["Índice geral da rede","8,4","▲ 1,2","#1E63E9"],["Metas atingidas","11/12","92%","#28A745"],["Profissionais formados","553","+18%","#F7931E"],["Escolas acompanhadas","18","100%","#7C5CFF"],["Habilidades","74%","▲ 9 p.p.","#14A39A"]].forEach((k,i)=>{h+=card(i*309,0,293,118,`<div class="row" style="justify-content:space-between"><p class="kl" style="font-size:19px">${k[0]}</p><i style="width:12px;height:12px;border-radius:50%;background:${k[3]}"></i></div><div class="row" style="justify-content:space-between;margin-top:8px"><p class="kv" style="font-size:42px;margin:0">${k[1]}</p><span class="chip" style="background:#F1F5FC;color:${k[3]};font-size:17px">${k[2]}</span></div>`,67.3+i*.12)});
+ // line chart
+ const M=["Mar","Abr","Mai","Jun","Ago","Set","Out","Nov"],LP=[58,61,63,66,70,72,76,79],MT=[52,54,57,59,62,66,68,71],FR=[86,88,87,90,91,93,94,95];
+ const lx=i=>40+i*112, ly=v=>230-(v-40)*3.4;const path=a=>a.map((v,i)=>(i?'L':'M')+lx(i)+' '+ly(v)).join(' ');
+ let svg=`<svg width="860" height="156" viewBox="0 0 860 260" preserveAspectRatio="none" style="position:absolute;left:14px;top:54px">`+[0,1,2,3].map(g=>`<path d="M40 ${ly(40+g*20)} H830" stroke="#EEF1F7" stroke-width="2"/>`).join('')+
+  `<path class="dl" d="${path(FR)}" fill="none" vector-effect="non-scaling-stroke" stroke="#C9D6F5" stroke-width="4" stroke-linecap="round"/><path class="dl" d="${path(LP)}" fill="none" vector-effect="non-scaling-stroke" stroke="#1E63E9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path class="dl" d="${path(MT)}" fill="none" stroke="#F7931E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+ const lab=M.map((m,i)=>`<span style="position:absolute;left:${14+lx(i)-30}px;width:60px;text-align:center;top:206px;font-size:17px;color:#9AA3B2">${m}</span>`).join('');
+ h+=card(0,134,900,240,`<div class="row" style="justify-content:space-between"><p style="font-size:22px;font-weight:700;color:#0B1F5C">Monitoramento dos indicadores</p><div class="row" style="gap:16px;font-size:17px;color:#6B7280"><span class="row" style="gap:6px"><i style="width:14px;height:4px;background:#1E63E9"></i>Português</span><span class="row" style="gap:6px"><i style="width:14px;height:4px;background:#F7931E"></i>Matemática</span><span class="row" style="gap:6px"><i style="width:14px;height:4px;background:#C9D6F5"></i>Frequência</span></div></div>${svg}${lab}`,67.6);
+ // donut by program
+ const P=[["Formação continuada",38,"#1E63E9"],["Projetos pedagógicos",27,"#F7931E"],["Gestão e assessoria",20,"#5B8DEF"],["Tecnologia",15,"#14A39A"]];let acc=0;const C=2*Math.PI*70;
+ let dn=`<svg width="150" height="150" viewBox="0 0 190 190" style="position:absolute;left:30px;top:66px;transform:rotate(-90deg)"><circle cx="95" cy="95" r="70" fill="none" stroke="#EEF1F7" stroke-width="30"/>`+P.map(p=>{const s=`<circle class="dn" data-len="${C*p[1]/100}" data-off="${-C*acc/100}" cx="95" cy="95" r="70" fill="none" stroke="${p[2]}" stroke-width="30" stroke-dasharray="0 ${C}" stroke-dashoffset="${-C*acc/100}"/>`;acc+=p[1];return s}).join('')+`</svg>`;
+ const leg=P.map(p=>`<div class="row" style="gap:10px;font-size:18px;color:#4B5563;margin-bottom:12px"><i style="width:14px;height:14px;border-radius:4px;background:${p[2]};flex:none"></i><span style="flex:1">${p[0]}</span><b style="color:#0B1F5C">${p[1]}%</b></div>`).join('');
+ h+=card(920,134,604,240,`<p style="font-size:22px;font-weight:700;color:#0B1F5C">Ações por programa</p>${dn}<div style="position:absolute;left:72px;top:116px;width:66px;text-align:center"><p class="mont" style="font-size:30px;font-weight:800;color:#0B1F5C">142</p><p style="font-size:14px;color:#9AA3B2">ações</p></div><div style="position:absolute;left:220px;top:74px;right:24px">${leg}</div>`,67.8);
+ // heatmap habilidades
+ const HB=[["Leitura e compreensão",[52,61,70,78]],["Números e operações",[48,57,63,72]],["Resolução de problemas",[38,47,56,66]]];
+ const col=v=>v>=70?'#1E63E9':v>=60?'#5B8DEF':v>=50?'#9DB8F2':'#FCD9B0';
+ let hm=`<div style="display:grid;grid-template-columns:250px repeat(4,1fr);gap:8px;margin-top:14px;font-size:17px">`+['','1º bim','2º bim','3º bim','4º bim'].map(x=>`<span style="color:#9AA3B2;text-align:center;font-weight:700">${x}</span>`).join('');
+ HB.forEach((r,ri)=>{hm+=`<span style="font-size:18px;font-weight:600;color:#0B1F5C;align-self:center">${r[0]}</span>`+r[1].map((v,ci)=>`<div data-a="${68.6+ri*.1+ci*.08} .35 pop" style="height:38px;border-radius:8px;background:${col(v)};color:${v>=60?'#fff':'#8A4B0B'};font-weight:800;display:flex;align-items:center;justify-content:center">${v}%</div>`).join('')});hm+='</div>';
+ h+=card(0,392,900,172,`<p style="font-size:22px;font-weight:700;color:#0B1F5C">Habilidades por bimestre</p>${hm}`,68.2).replace('height:172px','height:auto');
+ // ranking schools
+ const RS=[["E.M. Esperança",92],["E.M. Centro",88],["E.M. São José",84],["E.M. Boa Vista",79]];
+ h+=card(920,392,604,172,`<p style="font-size:22px;font-weight:700;color:#0B1F5C">Escolas em destaque</p>`+RS.map((r,i)=>`<div class="row" style="gap:14px;margin-top:${i?10:14}px"><span class="mont" style="width:34px;font-size:20px;font-weight:800;color:${i==0?'#F7931E':'#1E63E9'}">${i+1}º</span><span style="width:190px;font-size:19px;font-weight:600;color:#0B1F5C">${r[0]}</span><div class="pb" style="flex:1;margin:0;height:12px"><i data-w="${r[1]}" data-g="${68.8+i*.15} 1" style="${i==0?'background:linear-gradient(90deg,#F7931E,#FFB347)':''}"></i></div><b style="width:56px;text-align:right;font-size:19px;color:#0B1F5C">${r[1]}%</b></div>`).join(''),68.4).replace('height:172px','height:auto');
+ d.innerHTML=h})();
+
+
+/* ---- chapters ---- */
+const CH=[["Plano",4.5,11],["Projeto",11,17],["Formações",17,24.5],["Materiais",24.5,31],["Sistema",31,66],["Painel",66,77.5]];
+CH.forEach((c,i)=>H($('chap'),`<div class="ch"><span id="chl${i}">${c[0]}</span><div class="tr"><i id="chb${i}"></i></div></div>`));
+
+/* ---- cursor path (system) ---- */
+// window origin: left 170, top 96; app area top = 96+52 = 148; nav i center y = 148 + 34 + 30(logo~) ... computed from DOM at runtime
+let CUR=null;
+function buildCursor(){const r=el=>{const b=el.getBoundingClientRect();return [b.left+b.width/2,b.top+b.height/2]};
+ // temporarily show app to measure
+ const app=$('app'),lg=$('login');app.style.opacity=1;
+ const nav=NAV.map((_,i)=>r($('nav'+i)));const pdf=r($('btnpdf'));app.style.opacity=0;
+ const btn=r($('btnlogin'));
+ CUR=[[32.0,1500,800],[33.9,btn[0]+60,btn[1]-90],[34.6,btn[0],btn[1],'c'],[35.5,btn[0],btn[1]],
+  [37.8,nav[1][0]+40,nav[1][1]+120],[39.2,nav[1][0]-20,nav[1][1],'c'],[42.9,nav[1][0]-20,nav[1][1]],
+  [43.7,nav[2][0]-20,nav[2][1],'c'],[47.4,nav[2][0]-20,nav[2][1]],
+  [48.2,nav[3][0]-20,nav[3][1],'c'],[53.4,nav[3][0]-20,nav[3][1]],
+  [54.2,nav[4][0]-20,nav[4][1],'c'],[59.4,nav[4][0]-20,nav[4][1]],
+  [60.2,nav[5][0]-20,nav[5][1],'c'],[62.8,nav[5][0]+200,nav[5][1]-200],[63.6,pdf[0],pdf[1],'c'],[66,pdf[0]+20,pdf[1]+30]];}
+
+const PAGES=[[36.0,39.4],[39.4,43.9],[43.9,48.4],[48.4,54.4],[54.4,60.4],[60.4,66.2]];
+const CAPS=["Início","Cursos","Projetos","Indicadores","Gamificação","Relatório geral"];
+
+function animEl(el,t){const [a,d,k]=el.dataset.a.split(' ');const p=E(seg(t,+a,+d));let tr='';
+ if(k=='up')tr=`translateY(${(1-p)*40}px)`;else if(k=='left')tr=`translateX(${-(1-p)*50}px)`;else if(k=='right')tr=`translateX(${(1-p)*80}px)`;
+ else if(k=='scale')tr=`scale(${.92+.08*p})`;else if(k=='pop'){const q=seg(t,+a,+d);const s=q<1?(q<.7?.6+.55*E(q/.7):1.15-.15*E((q-.7)/.3)):1;tr=`scale(${s})`}
+ if(k=='grow'){el.style.transformOrigin='left center';tr=`scaleX(${p})`;el.style.opacity=p>0?1:0}else el.style.opacity=p;
+ el.style.transform=tr}
+
+function render(t){
+ document.querySelectorAll('.scene').forEach(s=>{const [a,b]=s.dataset.s.split(' ').map(Number);let o=0;if(t>=a&&t<=b)o=Math.min(seg(t,a,.5),1-seg(t,b-.5,.5));if(a==0)o=t<=b?1-seg(t,b-.5,.5):0;s.style.opacity=o;s.style.visibility=o>0?'visible':'hidden'});
+ document.querySelectorAll('[data-a]').forEach(el=>animEl(el,t));
+ document.querySelectorAll('[data-c]').forEach(el=>{const [a,d,v,dec,suf,suf2]=el.dataset.c.split(' ');const p=EIO(seg(t,+a,+d));const n=(+v)*p;const decs=+(dec||0);
+  let s=decs?n.toFixed(decs).replace('.',','):Math.round(n).toLocaleString('pt-BR');el.textContent=s+((suf||'')+(suf2?' '+suf2:''))});
+ document.querySelectorAll('[data-g]').forEach(el=>{const [a,d]=el.dataset.g.split(' ');const p=EIO(seg(t,+a,+d));if(el.dataset.h)el.style.height=(+el.dataset.h*p)+'%';else el.style.width=(+el.dataset.w*p)+'%'});
+ // plan bar
+ {const p=EIO(seg(t,8.5,1.5));$('planbar').style.width=(40*p)+'%';$('planpct').textContent=Math.round(40*p)+'%'}
+ // typing
+ {const em='gestao@educacao.pb.gov.br';const n=Math.floor(em.length*seg(t,32.2,1.4));$('typed').textContent=em.slice(0,n);$('caret').style.opacity=(t<33.7)?(Math.floor(t*2.5)%2?1:0.2):0;
+  $('pw').textContent='•'.repeat(Math.floor(9*seg(t,33.7,.6)));$('btnlogin').style.background=t>34.6&&t<35.2?'#0B2A8A':'#1E63E9'}
+ // login -> app
+ {const p=E(seg(t,35.4,.6));$('login').style.opacity=1-p;$('app').style.opacity=p;$('app').style.transform=`translateX(${(1-p)*40}px)`}
+ // pages
+ let cur=0;PAGES.forEach((pg,i)=>{const el=$('pg'+i);let o=0;if(t>=pg[0]&&t<pg[1])o=Math.min(seg(t,pg[0],.35),i==5?1:1-seg(t,pg[1]-.25,.25));el.style.opacity=o;el.style.transform=`translateY(${(1-E(seg(t,pg[0],.45)))*24}px)`;if(t>=pg[0])cur=i});
+ NAV.forEach((_,i)=>{const n=$('nav'+i),on=(i==cur&&t>=36);n.style.background=on?'#1E63E9':'transparent';n.style.color=on?'#fff':'#C9D6F5'});
+ $('capt').textContent=t<36?'Acesso':CAPS[cur];
+ // home chart line draw
+ {const l=$('hcl');const L=l.getTotalLength();l.style.strokeDasharray=L;l.style.strokeDashoffset=L*(1-EIO(seg(t,37.1,1.5)))}
+ // gamification zoom
+ {const zin=EIO(seg(t,55.0,1.0)),zout=EIO(seg(t,58.6,1.0));const z=1+.22*zin-.22*zout;const m=$('main');m.style.transformOrigin='0% 70%';m.style.transform=`scale(${z})`;
+  const pts=Math.round(1790*EIO(seg(t,55.6,1.4))+50*seg(t,57.6,.3));$('mypts').textContent=pts.toLocaleString('pt-BR');
+  const pp=seg(t,57.5,1.0);$('plus').style.opacity=pp>0&&pp<1?Math.sin(pp*Math.PI):0;$('plus').style.transform=`translateY(${-pp*40}px)`}
+ // pdf button + toast
+ {$('btnpdf').style.transform=t>63.6&&t<63.9?'scale(.95)':'scale(1)';const p=E(seg(t,64.0,.5));$('toast').style.opacity=p;$('toast').style.transform=`translateY(${(1-p)*30}px)`}
+ // cursor
+ {const c=$('cursor'),rp=$('rip');if(t<32||t>65.8){c.style.opacity=0;rp.style.opacity=0}else{let i=0;while(i<CUR.length-1&&t>CUR[i+1][0])i++;const A=CUR[i],B=CUR[Math.min(i+1,CUR.length-1)];
+  const p=B[0]>A[0]?EIO(clamp((t-A[0])/(B[0]-A[0]),0,1)):1;let x=A[1]+(B[1]-A[1])*p,y=A[2]+(B[2]-A[2])*p;
+  // gamification zoom moves nothing for nav (sidebar not scaled)
+  c.style.opacity=Math.min(seg(t,32,.3),1-seg(t,65.5,.3));c.style.left=x-6+'px';c.style.top=y-3+'px';
+  let rr=0;CUR.forEach(k=>{if(k[3]=='c'){const q=seg(t,k[0],.5);if(q>0&&q<1){rr=1;rp.style.left=k[1]-35+'px';rp.style.top=k[2]-35+'px';rp.style.opacity=1-q;rp.style.transform=`scale(${.4+q})`}}});if(!rr)rp.style.opacity=0;
+  const clk=CUR.some(k=>k[3]=='c'&&t>k[0]&&t<k[0]+.18);c.style.transform=clk?'scale(.85)':'scale(1)'}}
+ // checklists
+ {const done={};CK.forEach(([id,i,tt])=>{const on=t>=tt;const x=$(id+'x'+i),st=$(id+'s'+i);const p=E(seg(t,tt,.3));x.style.background=on?'#1E63E9':'#fff';x.style.borderColor=on?'#1E63E9':'#C9D6F5';x.textContent=on?'✓':'';x.style.transform=on?`scale(${1+.25*(1-p)})`:'scale(1)';st.textContent=on?'Concluído':'Pendente';st.style.background=on?'#E3F6E8':'#F1F5FC';st.style.color=on?'#1F8A47':'#9AA3B2';done[id]=(done[id]||0)+(on?1:0)});
+  ['ck1','ck2'].forEach(id=>{const n=done[id]||0;$(id+'n').textContent=n+' de 6';$(id+'b').style.width=(n/6*100)+'%';$(id+'n').style.background=n==6?'#F7931E':'#1E63E9'})}
+ // dashboard lines + donut + zoom
+ {document.querySelectorAll('.dl').forEach((l,i)=>{const L=l.getTotalLength();l.style.strokeDasharray=L;l.style.strokeDashoffset=L*(1-EIO(seg(t,67.9+i*.2,1.6)))});
+  const C=2*Math.PI*70;document.querySelectorAll('.dn').forEach((c,i)=>{const p=EIO(seg(t,68.1+i*.25,.8));c.setAttribute('stroke-dasharray',(+c.dataset.len*p)+' '+C)});
+  const z=1;$('dash').style.transform=$('dash').style.opacity>0?`scale(${(.92+.08*E(seg(t,66.7,.9)))*z})`:''}
+ // floating covers
+ document.querySelectorAll('.flt').forEach(el=>{const f=+el.dataset.f;el.style.transform=`translateY(${5*Math.sin((t-20)*1.4+f*2)}px)`});
+
+ // chapters
+ {const ch=$('chap');ch.style.opacity=Math.min(seg(t,4.6,.5),1-seg(t,77.1,.4));const dark=t>=31.2&&t<66;
+  CH.forEach((c,i)=>{const p=seg(t,c[1],c[2]-c[1]);$('chb'+i).style.width=p*100+'%';const on=t>=c[1]&&t<c[2];$('chl'+i).style.color=on?(dark?'#fff':'#0B1F5C'):(dark?'rgba(201,214,245,.55)':'#9AA3B2')})}
+}
+window.render=render;
+document.fonts.ready.then(()=>{buildCursor();window.READY=1;render(+location.hash.slice(1)||0)});
+</script>
+</body></html>

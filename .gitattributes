@@ -1,0 +1,8 @@
+# Padroniza quebras de linha (evita diferenças falsas entre Windows e outros sistemas)
+* text=auto eol=lf
+*.mp4 binary
+*.jpg binary
+*.png binary
+*.webp binary
+*.otf binary
+*.ttf binary

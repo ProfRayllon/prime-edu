@@ -1,0 +1,49 @@
+/* PrimeEdu — player local da apresentação (1920×1080) */
+@font-face { font-family: "Montserrat"; src: url("../fonts/Montserrat-Variable.ttf") format("truetype"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-Regular.otf") format("opentype"); font-weight: 400; font-display: block; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-Medium.otf") format("opentype"); font-weight: 500; font-display: block; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-SemiBold.otf") format("opentype"); font-weight: 600; font-display: block; }
+@font-face { font-family: "Inter"; src: url("../fonts/Inter-Bold.otf") format("opentype"); font-weight: 700 900; font-display: block; }
+
+html, body { margin: 0; height: 100%; background: #05112f; overflow: hidden; }
+body { font-family: Inter, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+#viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #000; }
+
+/* Each slide */
+#stage > section {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px;
+  box-sizing: border-box; overflow: hidden;
+  font-family: Inter, Arial, sans-serif; font-size: 32px; line-height: 1.4; color: #1F2937;
+  display: flex; flex-direction: column;
+}
+#stage section * { box-sizing: border-box; margin: 0; }
+#stage section div { display: flex; flex-direction: column; }
+#stage section h1 { font-size: 96px; font-weight: 600; line-height: 1.1; }
+#stage section h2 { font-size: 64px; font-weight: 600; line-height: 1.15; }
+#stage section h3 { font-size: 44px; font-weight: 600; line-height: 1.2; }
+#stage section p { line-height: inherit; }
+#stage section img, #stage section video { display: block; object-fit: cover; }
+#stage section aside { display: none; }
+#stage section .x-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; }
+#stage section .x-icon svg { width: 62%; height: 62%; }
+#stage section iframe.x-embed { border: 0; background: transparent; }
+
+/* Build-in animation helpers (individual transform properties so they stack with inline transforms) */
+#stage section [data-build-in] { transition: opacity .38s ease, translate .38s cubic-bezier(.2,.7,.2,1), scale .38s cubic-bezier(.2,.7,.2,1); }
+#stage section [data-build-in].b-hidden { opacity: 0 !important; }
+#stage section [data-build-in].b-hidden.b-rise { translate: 0 40px; }
+#stage section [data-build-in].b-hidden.b-drop { translate: 0 -40px; }
+#stage section [data-build-in].b-hidden.b-left { translate: -60px 0; }
+#stage section [data-build-in].b-hidden.b-right { translate: 60px 0; }
+#stage section [data-build-in].b-hidden.b-scale { scale: .85; }
+#stage section [data-build-in].b-hidden.b-pop { scale: .6; }
+#stage section [data-build-in].b-pop-in { transition: opacity .38s ease, scale .45s cubic-bezier(.34,1.56,.64,1); }
+#stage section.no-anim [data-build-in] { transition: none !important; }
+
+/* HUD */
+#hud { position: fixed; right: 16px; bottom: 12px; font: 600 13px/1 Inter, Arial, sans-serif; color: rgba(255,255,255,.55); letter-spacing: .5px; pointer-events: none; transition: opacity .4s; }
+#notes { position: fixed; left: 0; right: 0; bottom: 0; max-height: 34vh; overflow: auto; background: rgba(5,17,47,.94); color: #E6EEFD; font: 400 17px/1.5 Inter, Arial, sans-serif; padding: 16px 22px; display: none; }
+#notes.on { display: block; }
+#help { position: fixed; left: 16px; bottom: 12px; font: 500 13px/1.4 Inter, Arial, sans-serif; color: rgba(255,255,255,.55); pointer-events: none; transition: opacity 1s; }

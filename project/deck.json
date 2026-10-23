@@ -1,0 +1,70 @@
+{
+  "v": 4,
+  "attachments": {},
+  "cover": "cover",
+  "createdOnFiles": {
+    "at": "2026-10-22T18:20:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "faces": {
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
+    },
+    "montserrat": {
+      "family": "Montserrat",
+      "href": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap"
+    }
+  },
+  "lists": "css",
+  "order": [
+    "cover",
+    "quem-somos",
+    "missao",
+    "visao",
+    "mapa",
+    "metodologia",
+    "portfolio",
+    "portfolio-2",
+    "portfolio-3",
+    "portfolio-4",
+    "portfolio-5",
+    "portfolio-6",
+    "planos-intro",
+    "prog-start-det",
+    "prog-plus-det",
+    "prog-prime-det",
+    "comparativo",
+    "entregas",
+    "entregas-video",
+    "equipe-gestao",
+    "equipe-juridica",
+    "equipe-pedagogica",
+    "legal",
+    "cta"
+  ],
+  "sections": {
+    "s1": {
+      "description": "Abertura: a PrimeEdu e sua promessa de marca.",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "Quem somos, como trabalhamos e onde atuamos.",
+      "start": "quem-somos"
+    },
+    "s3": {
+      "description": "Os três programas de serviço, em detalhe e comparados.",
+      "start": "planos-intro"
+    },
+    "s4": {
+      "description": "Entregas, equipe, diferenciais e base normativa.",
+      "start": "entregas"
+    },
+    "s5": {
+      "description": "Fechamento e próximos passos para a parceria.",
+      "start": "cta"
+    }
+  },
+  "title": "PrimeEdu — Proposta Comercial"
+}
