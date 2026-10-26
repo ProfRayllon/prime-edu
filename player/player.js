@@ -78,6 +78,22 @@
       copyAttrs(img, v, ["id", "data-build-in", "data-build-out", "data-crop", "data-pdf-link"]);
       if (!/object-fit/.test(v.getAttribute("style"))) v.style.objectFit = "cover";
       img.replaceWith(v);
+      // data-video-click="pause": clicar no vídeo pausa/retoma (em vez de avançar); um selo de play aparece enquanto pausado.
+      if (img.getAttribute("data-video-click") !== "pause") return;
+      var badge = document.createElement("div");
+      badge.className = "video-paused";
+      ["left", "top", "width", "height"].forEach(function (k) { badge.style[k] = v.style[k]; });
+      badge.innerHTML = '<span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>';
+      v.after(badge);
+      v._badge = badge;
+      v.style.cursor = "pointer";
+      v.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (firstGesture()) return;
+        clearTimeout(v._t);
+        if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); badge.classList.remove("on"); }
+        else { v.pause(); badge.classList.add("on"); }
+      });
     });
 
     // data-crop="ZOOM X% Y%" → object-position (+ zoom)
@@ -141,6 +157,7 @@
     sec.querySelectorAll("video").forEach(function (v) {
       try { v.currentTime = 0; } catch (e) {}
       clearTimeout(v._t);
+      if (v._badge) v._badge.classList.remove("on");
       v._t = setTimeout(function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); }, v._delay * 1000);
     });
   }
@@ -268,6 +285,7 @@
         img.setAttribute("style", v.getAttribute("style") || "");
         img.src = v.poster; img.alt = v.getAttribute("aria-label") || "";
         v.replaceWith(img);
+        if (v._badge) v._badge.remove();
         if (!v.hasAttribute("data-pdf-link")) return;
         var a = document.createElement("a");
         a.className = "pdf-video-link";

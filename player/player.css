@@ -63,6 +63,10 @@ html.print #viewport { position: static; display: block; }
 html.print #stage { position: static; height: auto; background: none; overflow: visible; }
 html.print #stage > section { position: relative; break-after: page; }
 html.print #hud, html.print #help, html.print #notes, html.print #tools { display: none; }
+#stage section .video-paused { position: absolute; display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0; transition: opacity .25s; }
+#stage section .video-paused.on { opacity: 1; }
+#stage section .video-paused span { display: flex; align-items: center; justify-content: center; width: 160px; height: 160px; border-radius: 50%; background: rgba(10,31,92,.72); color: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+#stage section .video-paused svg { width: 80px; height: 80px; margin-left: 10px; }
 #stage section a.pdf-video-link { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 100px; text-decoration: none; }
 #stage section a.pdf-video-link span { display: flex; align-items: center; gap: 18px; padding: 26px 44px; border-radius: 999px; background: #F7931E; color: #0A1F5C; font: 700 40px/1 Montserrat, Arial, sans-serif; box-shadow: 0 12px 40px rgba(0,0,0,.35); }
 #stage section a.pdf-video-link svg { width: 44px; height: 44px; }
