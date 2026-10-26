@@ -3,7 +3,7 @@
 //
 // Rode depois de editar os slides (e de rodar tools/build_deck.py):  node tools/build_pdf.mjs
 // Usa o Edge ou o Chrome instalado: abre index.html?print (todos os slides prontos), tira uma imagem
-// JPEG de cada slide e monta um PDF leve, uma página por slide. O vídeo do slide 19 vira a capa com
+// JPEG de cada slide e monta um PDF leve, uma página por slide. O vídeo do slide 20 vira a capa com
 // um link clicável para assistir em PUBLIC_URL. Requer Node 22+ (sem dependências).
 import { spawn } from "node:child_process";
 import fs from "node:fs";
